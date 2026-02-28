@@ -5,6 +5,7 @@
 
 class Entity;
 class Player;
+class Hunter;
 class Monster;
 
 class Room {
@@ -15,9 +16,11 @@ public:
     char GetLocation(Vec2 _pos);
     void ClearLocation(Vec2 _pos);
     void OpenDoor(Vec2 _pos);
+    void FightHunter(Vec2 _pos);
 private:
     std::vector<Entity*> m_entities;
     Player* m_player = nullptr;
+    Hunter* m_hunter = nullptr;
     std::vector<Monster*> m_monsters;
     std::vector<std::vector<char>> m_map;
     std::vector<Door> m_doors;

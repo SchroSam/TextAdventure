@@ -6,6 +6,8 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY $<1:${CMAKE_SOURCE_DIR}/>)
 
 file(GLOB_RECURSE SRC_SOURCES src/*.c*)
 file(GLOB_RECURSE SRC_HEADERS src/*.h*)
+file(GLOB_RECURSE SRC_HEADERS src/Entities/*.c*)
+file(GLOB_RECURSE SRC_HEADERS src/Entities/*.h*)
 
 add_executable(${PROJECT_NAME} ${SRC_SOURCES} ${SRC_HEADERS})
 

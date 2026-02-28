@@ -1,6 +1,6 @@
 #pragma once
 
-#include "fogpi/Math.hpp"
+#include "../fogpi/Math.hpp"
 
 class Room;
 
@@ -14,7 +14,8 @@ class Entity {
         Vec2 GetPosition() { return m_position; };
         char Draw() { return m_character; }
 
-    protected:
         Vec2 m_position;
+
+    protected:
         char m_character;
 };

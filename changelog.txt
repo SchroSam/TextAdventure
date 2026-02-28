@@ -1,1 +1,21 @@
 THE CHANGELOG
+
+Current Tileset:
+# = Wall
+0 = Empty space
+D = Door
+L = Locked Door
+S = Start
+K = Key
+H = Hunter      (Tentative)
+B = Butcher     (Tentative)
+
+
+2/27/26
+S.G
+-Moved Entity.hpp, Player.hpp, and Player.cpp into new Entities directory and refactors includes accordingly
+-Created Hunter.hpp and Hunter.cpp within Entities directory
+-Created Dice.cpp (same function code from former Dice.hpp) so that Dice can be imported into multiple files, and refacted Dice.hpp accordingly
+-Created FightEntity function within Room files, currently segfaults because I can't figure out how to parse Hunters from the level without ruining the rendering
+-Added dice-related variables to Player
+-Made some progress on Fight() function within Hunter, but cannot properly test until I fix formerly mentioned segfault.

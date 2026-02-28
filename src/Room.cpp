@@ -1,6 +1,7 @@
 #include "Room.hpp"
 
-#include "Player.hpp"
+#include "Entities/Player.hpp"
+#include "Entities/Hunter.hpp"
 
 #include <fstream>
 #include <string>
@@ -59,6 +60,7 @@ void Room::Load(std::string _path)
 
                 if (word == "0")
                     m_map[m_map.size() - 1].push_back(' ');
+
                 else
                     m_map[m_map.size() - 1].push_back(word[0]);
                 
@@ -67,6 +69,7 @@ void Room::Load(std::string _path)
     }
 
     int doorCount = 0;
+    int entityCount = 0;
     for (int y = 0; y < m_map.size(); y++)
     {
         for (int x = 0; x < m_map[y].size(); x++)
@@ -89,6 +92,7 @@ void Room::Load(std::string _path)
                     doorCount++;
                 }
             }
+
         }
     }
 }
@@ -148,6 +152,19 @@ void Room::OpenDoor(Vec2 _pos)
         if (m_doors[i].pos == _pos)
         {
             Load(m_doors[i].path.c_str());
+        }
+    }
+}
+
+void Room::FightHunter(Vec2 _pos)
+{
+    for (int i = 0; i < m_entities.size(); i++)
+    {
+        if (m_entities[i]->m_position == _pos)
+        {
+            Hunter* h = dynamic_cast<Hunter*>(m_entities[i]);
+            if (h)
+                h->Fight(m_player);
         }
     }
 }
