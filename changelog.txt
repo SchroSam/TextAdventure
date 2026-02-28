@@ -19,3 +19,4 @@ S.G
 -Created FightEntity function within Room files, currently segfaults because I can't figure out how to parse Hunters from the level without ruining the rendering
 -Added dice-related variables to Player
 -Made some progress on Fight() function within Hunter, but cannot properly test until I fix formerly mentioned segfault.
+-Fixed fight function, no longer segfaults, rolling and health decrease works as intended. Pending death check.

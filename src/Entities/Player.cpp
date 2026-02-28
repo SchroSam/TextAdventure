@@ -7,7 +7,8 @@ void Player::Start(Vec2 _pos) {
     m_position = _pos;
     m_max_roll = 10;
     m_health = 20;
-    m_dice.push_back(Die{m_max_roll});
+    if (m_dice.empty())
+        m_dice.push_back(Die{m_max_roll});
 }
 
 void Player::Update() {

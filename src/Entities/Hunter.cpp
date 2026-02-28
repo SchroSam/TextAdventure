@@ -16,13 +16,15 @@ void Hunter::Fight(Player* m_player)
 {
     RollStats player_stats = RollDice(m_player->m_dice);
     RollStats hunter_stats = RollDice(m_dice);
-    printf("Player rolled %d, Hunter rolled %d, %d damage done to ", player_stats.total, hunter_stats.total, abs(player_stats.total-hunter_stats.total));
+    printf("Player rolled %d using %zu, Hunter rolled %d using %zu, %d damage done to ", player_stats.total, m_player->m_dice.size(), hunter_stats.total, m_dice.size(), abs(player_stats.total-hunter_stats.total));
     if (player_stats.total > hunter_stats.total)
     {
+        printf("Hunter\n");
         m_health -= (player_stats.total - hunter_stats.total);
     }
     else if (hunter_stats.total > player_stats.total)
     {
+        printf("Player\n");
         m_player->m_health -= (hunter_stats.total - player_stats.total);
     }
 }

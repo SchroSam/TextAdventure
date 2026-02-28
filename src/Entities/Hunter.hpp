@@ -13,7 +13,6 @@ public:
     void Update();
     void Fight(Player* m_player);
     int m_health = 10;
-    int m_max_roll = 5;
-    std::vector<Die> m_dice;
+    std::vector<Die> m_dice = {Die{10}};
 private:
 };

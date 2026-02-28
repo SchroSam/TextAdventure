@@ -60,6 +60,11 @@ void Room::Load(std::string _path)
 
                 if (word == "0")
                     m_map[m_map.size() - 1].push_back(' ');
+                
+                else if (word == "H")
+                {
+                    m_map[m_map.size() - 1].push_back('H');
+                }
 
                 else
                     m_map[m_map.size() - 1].push_back(word[0]);
@@ -91,6 +96,14 @@ void Room::Load(std::string _path)
                     m_doors[doorCount].pos.y = y;
                     doorCount++;
                 }
+            }
+
+            if (m_map[y][x] == 'H')
+            {
+                Hunter* h = new Hunter;
+                h->Start(Vec2(x,y));
+                m_entities.push_back(new Hunter);
+                entityCount++;
             }
 
         }
@@ -157,14 +170,16 @@ void Room::OpenDoor(Vec2 _pos)
 }
 
 void Room::FightHunter(Vec2 _pos)
-{/*
+{
+    printf("FIGHTHUNTER\n");
     for (int i = 0; i < m_entities.size(); i++)
     {
-        if (m_entities[i]->m_position == _pos)
+        if (m_entities[i])
         {
             Hunter* h = dynamic_cast<Hunter*>(m_entities[i]);
             if (h)
+                printf("FIGHTPLAYER\n");
                 h->Fight(m_player);
         }
-    }*/
+    }
 }
