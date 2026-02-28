@@ -157,7 +157,7 @@ void Room::OpenDoor(Vec2 _pos)
 }
 
 void Room::FightHunter(Vec2 _pos)
-{
+{/*
     for (int i = 0; i < m_entities.size(); i++)
     {
         if (m_entities[i]->m_position == _pos)
@@ -166,5 +166,5 @@ void Room::FightHunter(Vec2 _pos)
             if (h)
                 h->Fight(m_player);
         }
-    }
+    }*/
 }
