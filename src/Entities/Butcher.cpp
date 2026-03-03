@@ -30,7 +30,7 @@ void Butcher::Fight(Player* m_player)
         }
         if (m_health < 0) m_health = 0;
         if (m_player->m_health < 0) m_player->m_health = 0;
-        printf("Player Health: %d, Butcher Health: %d\n",m_player->m_health, m_health);
+        printf("\nPlayer Health: %d, Butcher Health: %d\n",m_player->m_health, m_health);
         if (m_player->m_health < 1 || m_health < 1) break;
         char p = request_char("Input w to keep fighting or s to retreat >> \n");
         if (p == 's') break;

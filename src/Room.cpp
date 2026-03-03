@@ -254,7 +254,8 @@ void Room::FightHunter(Vec2 _pos)
         if (m_entities[i])
         {
             Hunter* h = dynamic_cast<Hunter*>(m_entities[i]);
-            if (h)
+            if (h->m_position == _pos)
+            {
                 h->Fight(m_player);
                 auto it = m_entities.begin() + i;
                 if (m_player->m_health > 0) {
@@ -264,6 +265,10 @@ void Room::FightHunter(Vec2 _pos)
                     enemyCount--;
                 }
                 else if (m_player->m_health < 1) m_player->Death(m_player->m_gold);
+                if (h->m_health < 1) printf("\n---FIGHT OVER---\nHealth: %d\nGold: %d\nStrength: %d\n", m_player->m_health, m_player->m_gold, m_player->m_dice[0].sides);
+                else printf("\n---RETREATED---\nHealth: %d\nGold: %d\nStrength: %d\n", m_player->m_health, m_player->m_gold, m_player->m_dice[0].sides);
+                break;
+            }
         }
     }
 }
@@ -275,7 +280,8 @@ void Room::FightButcher(Vec2 _pos)
         if (m_entities[i])
         {
             Butcher* h = dynamic_cast<Butcher*>(m_entities[i]);
-            if (h)
+            if (h->m_position == _pos)
+            {
                 h->Fight(m_player);
                 auto it = m_entities.begin() + i;
                 if (m_player->m_health > 0 && h->m_health < 1) {
@@ -285,7 +291,10 @@ void Room::FightButcher(Vec2 _pos)
                     enemyCount--;
                 }
                 else if (m_player->m_health < 1) m_player->Death(m_player->m_gold);
-                printf("\n\n\n---FIGHT OVER---\nHealth: %d\nGold: %d\nStrength: %d\n", m_player->m_health, m_player->m_gold, m_player->m_dice[0].sides);
+                if (h->m_health < 1) printf("\n---FIGHT OVER---\nHealth: %d\nGold: %d\nStrength: %d\n", m_player->m_health, m_player->m_gold, m_player->m_dice[0].sides);
+                else printf("\n---RETREATED---\nHealth: %d\nGold: %d\nStrength: %d\n", m_player->m_health, m_player->m_gold, m_player->m_dice[0].sides);
+                break;
+            }
         }
     }
 }
