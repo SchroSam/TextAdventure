@@ -39,3 +39,6 @@ S.S
 3/3/26
 S.G
 -Fixed errors in fight functions and accounts for multiple of same enemy type in a room
+
+S.S
+-Added reading ANSI color codes from a file (ANSI_COLORS.txt)
