@@ -85,8 +85,8 @@ void Player::Update() {
     }
 }
 
-void Player::Death(int gold) {
-    printf("You died with %d gold", gold);
+void Player::Death(int gold, int strength) {
+    printf("You died with %d gold and %d strength", gold, strength);
     char c = request_char(", press any button to end");
     std::exit(EXIT_SUCCESS);
 }

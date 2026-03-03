@@ -9,7 +9,7 @@ public:
     void Start(Vec2 _pos);
     void Update();
     void OpenChest();
-    void Death(int m_gold);
+    void Death(int gold, int strength);
 
     int m_health = 20;
     int m_max_roll = 10;
