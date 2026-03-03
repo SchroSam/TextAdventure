@@ -158,10 +158,14 @@ void Room::Draw()
         {
             char obj = GetLocation(Vec2(x, y));
             
-            std::string modifier = colors[0];
+            std::string modifier = "[0;37m";
 
             switch(obj)
             {
+                case 'P':
+                modifier = colors[0];
+                break;
+
                 case '#':
                 modifier = colors[1];
                 break;
