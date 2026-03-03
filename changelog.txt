@@ -9,6 +9,7 @@ S = Start
 K = Key
 H = Hunter      (Tentative)
 B = Butcher     (Tentative)
+C = Chest
 
 
 2/27/26
@@ -27,3 +28,8 @@ S.G
 -Fully added Butcher enemy and FightButcher functionality
 -Enemies now reward the player gold on death
 -Player can now die 
+
+S.S
+-Added chance for player to heal between rooms
+-Added chance for alternate Key & Chest version of room 3
+-Added Locked door logic (key mode) as they just did nothing before

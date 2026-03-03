@@ -168,7 +168,18 @@ void Room::OpenDoor(Vec2 _pos)
     {
         if (m_doors[i].pos == _pos)
         {
-            Load(m_doors[i].path.c_str());
+            // Healing
+            if(random_int(0, 2) != 0)
+            {
+                int healAmount = random_int(1, 5);
+                m_player->m_health += healAmount;
+                printf("You healed %d health!\n", healAmount);
+            }
+
+            if(m_doors[i].path != "assets/level_3.map" || random_int(0, 1)) // non-zero is true
+                Load(m_doors[i].path.c_str());
+            else
+                Load("assets/level_3-C.map");
         }
     }
 }

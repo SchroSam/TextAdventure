@@ -8,6 +8,7 @@ class Player : public Entity
 public:
     void Start(Vec2 _pos);
     void Update();
+    void OpenChest();
     void Death(int m_gold);
 
     int m_health = 20;

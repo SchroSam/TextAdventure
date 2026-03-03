@@ -5,8 +5,17 @@
 void Player::Start(Vec2 _pos) {
     m_character = 'P';
     m_position = _pos;
+
     if (m_dice.empty())
         m_dice.push_back(Die{m_max_roll});
+}
+
+void Player::OpenChest()
+{
+    int reward = random_int(1, 15);
+    m_gold += reward;
+    printf("You got %d gold!\n", reward);
+
 }
 
 void Player::Update() {
@@ -49,11 +58,21 @@ void Player::Update() {
         room->ClearLocation(tryPos);
     }
 
+    if (room->GetLocation(tryPos) == 'C') {
+        OpenChest();
+        room->ClearLocation(tryPos);
+    }
+
     if (room->GetLocation(tryPos) == ' ') {
         m_position = tryPos;
     }
 
     if (room->GetLocation(tryPos) == 'D') {
+        room->OpenDoor(tryPos);
+    }
+
+    if(room->GetLocation(tryPos) == 'L' && m_keyCount >= 1) {
+        m_keyCount--;
         room->OpenDoor(tryPos);
     }
 
