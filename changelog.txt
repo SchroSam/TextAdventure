@@ -34,3 +34,4 @@ S.S
 -Added chance for alternate Key & Chest version of room 3
 -Added Locked door logic (key mode) as they just did nothing before
 -Doors are now inaccessible before clearing all enemies in room
+-Added pretty colors
