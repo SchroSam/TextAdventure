@@ -2,6 +2,7 @@
 
 #include "Entities/Player.hpp"
 #include "Entities/Hunter.hpp"
+#include "Entities/Butcher.hpp"
 
 #include <fstream>
 #include <string>
@@ -61,11 +62,6 @@ void Room::Load(std::string _path)
                 if (word == "0")
                     m_map[m_map.size() - 1].push_back(' ');
                 
-                else if (word == "H")
-                {
-                    m_map[m_map.size() - 1].push_back('H');
-                }
-
                 else
                     m_map[m_map.size() - 1].push_back(word[0]);
                 
@@ -102,7 +98,15 @@ void Room::Load(std::string _path)
             {
                 Hunter* h = new Hunter;
                 h->Start(Vec2(x,y));
-                m_entities.push_back(new Hunter);
+                m_entities.push_back(h);
+                entityCount++;
+            }
+
+            if (m_map[y][x] == 'B')
+            {
+                Butcher* b = new Butcher;
+                b->Start(Vec2(x,y));
+                m_entities.push_back(b);
                 entityCount++;
             }
 
@@ -171,15 +175,41 @@ void Room::OpenDoor(Vec2 _pos)
 
 void Room::FightHunter(Vec2 _pos)
 {
-    printf("FIGHTHUNTER\n");
     for (int i = 0; i < m_entities.size(); i++)
     {
         if (m_entities[i])
         {
             Hunter* h = dynamic_cast<Hunter*>(m_entities[i]);
             if (h)
-                printf("FIGHTPLAYER\n");
                 h->Fight(m_player);
+                auto it = m_entities.begin() + i;
+                if (m_player->m_health > 0) {
+                    m_entities.erase(it);
+                    Room::ClearLocation(_pos);
+                    m_player->m_gold += 5;
+                }
+                else if (m_player->m_health < 1) m_player->Death(m_player->m_gold);
+        }
+    }
+}
+
+void Room::FightButcher(Vec2 _pos)
+{
+    for (int i = 0; i < m_entities.size(); i++)
+    {
+        if (m_entities[i])
+        {
+            Butcher* h = dynamic_cast<Butcher*>(m_entities[i]);
+            if (h)
+                h->Fight(m_player);
+                auto it = m_entities.begin() + i;
+                if (m_player->m_health > 0 && h->m_health < 1) {
+                    m_entities.erase(it);
+                    Room::ClearLocation(_pos);
+                    m_player->m_gold += 10;
+                }
+                else if (m_player->m_health < 1) m_player->Death(m_player->m_gold);
+                printf("\n\n\n---FIGHT OVER---\nHealth: %d\nGold: %d\nStrength: %d\n", m_player->m_health, m_player->m_gold, m_player->m_dice[0].sides);
         }
     }
 }

@@ -17,6 +17,7 @@ public:
     void ClearLocation(Vec2 _pos);
     void OpenDoor(Vec2 _pos);
     void FightHunter(Vec2 _pos);
+    void FightButcher(Vec2 _pos);
 private:
     std::vector<Entity*> m_entities;
     Player* m_player = nullptr;

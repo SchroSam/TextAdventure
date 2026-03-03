@@ -5,8 +5,6 @@
 void Player::Start(Vec2 _pos) {
     m_character = 'P';
     m_position = _pos;
-    m_max_roll = 10;
-    m_health = 20;
     if (m_dice.empty())
         m_dice.push_back(Die{m_max_roll});
 }
@@ -62,4 +60,14 @@ void Player::Update() {
     if (room->GetLocation(tryPos) == 'H') {
         room->FightHunter(tryPos);
     }
+
+    if (room->GetLocation(tryPos) == 'B') {
+        room->FightButcher(tryPos);
+    }
+}
+
+void Player::Death(int gold) {
+    printf("You died with %d gold", gold);
+    char c = request_char(", press any button to end");
+    std::exit(EXIT_SUCCESS);
 }

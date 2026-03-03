@@ -6,13 +6,14 @@
 #include "../Dice.hpp"
 #include "../fogpi/io.hpp"
 
-class Hunter : public Entity
+class Butcher : public Entity
 {
 public:
     void Start(Vec2 _pos);
     void Update();
     void Fight(Player* m_player);
-    int m_health = 10;
-    std::vector<Die> m_dice = {Die{5}};
+    int m_health = 5;
+    std::vector<Die> m_dice = {Die{10}};
+
 private:
 };

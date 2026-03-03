@@ -20,3 +20,10 @@ S.G
 -Added dice-related variables to Player
 -Made some progress on Fight() function within Hunter, but cannot properly test until I fix formerly mentioned segfault.
 -Fixed fight function, no longer segfaults, rolling and health decrease works as intended. Pending death check.
+
+3/2/26
+S.G
+-Finished Hunter enemy and FightHunter function functionality
+-Fully added Butcher enemy and FightButcher functionality
+-Enemies now reward the player gold on death
+-Player can now die 
