@@ -23,7 +23,7 @@ void Hunter::Fight(Player* m_player)
             printf("Hunter\n");
             m_health -= (player_stats.total - hunter_stats.total);
         }
-        else if (hunter_stats.total > player_stats.total)
+        else
         {
             printf("Player\n");
             m_player->m_health -= (hunter_stats.total - player_stats.total);
