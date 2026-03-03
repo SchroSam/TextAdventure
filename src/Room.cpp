@@ -262,9 +262,10 @@ void Room::FightHunter(Vec2 _pos)
                     m_entities.erase(it);
                     Room::ClearLocation(_pos);
                     m_player->m_gold += 5;
+                    m_player->m_dice[0].sides += 1;
                     enemyCount--;
                 }
-                else if (m_player->m_health < 1) m_player->Death(m_player->m_gold);
+                else if (m_player->m_health < 1) m_player->Death(m_player->m_gold, m_player->m_dice[0].sides);
                 if (h->m_health < 1) printf("\n---FIGHT OVER---\nHealth: %d\nGold: %d\nStrength: %d\n", m_player->m_health, m_player->m_gold, m_player->m_dice[0].sides);
                 else printf("\n---RETREATED---\nHealth: %d\nGold: %d\nStrength: %d\n", m_player->m_health, m_player->m_gold, m_player->m_dice[0].sides);
                 break;
@@ -288,9 +289,10 @@ void Room::FightButcher(Vec2 _pos)
                     m_entities.erase(it);
                     Room::ClearLocation(_pos);
                     m_player->m_gold += 10;
+                    m_player->m_dice[0].sides += 1;
                     enemyCount--;
                 }
-                else if (m_player->m_health < 1) m_player->Death(m_player->m_gold);
+                else if (m_player->m_health < 1) m_player->Death(m_player->m_gold, m_player->m_dice[0].sides);
                 if (h->m_health < 1) printf("\n---FIGHT OVER---\nHealth: %d\nGold: %d\nStrength: %d\n", m_player->m_health, m_player->m_gold, m_player->m_dice[0].sides);
                 else printf("\n---RETREATED---\nHealth: %d\nGold: %d\nStrength: %d\n", m_player->m_health, m_player->m_gold, m_player->m_dice[0].sides);
                 break;
