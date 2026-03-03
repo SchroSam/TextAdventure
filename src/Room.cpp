@@ -4,6 +4,7 @@
 #include "Entities/Hunter.hpp"
 #include "Entities/Butcher.hpp"
 
+#include <iostream>
 #include <fstream>
 #include <string>
 
@@ -135,7 +136,42 @@ void Room::Draw()
     {
         for (int x = 0; x < m_map[y].size(); x++)
         {
-            printf("%c ", GetLocation(Vec2(x, y)));
+            char obj = GetLocation(Vec2(x, y));
+            
+            std::string modifier = "[35m";
+
+            switch(obj)
+            {
+                case '#':
+                modifier = "[1;90m";
+                break;
+
+                case 'D':
+                modifier = "[32m";
+                break;
+
+                case 'L':
+                modifier = "[32m";
+                break;
+
+                case 'K':
+                modifier = "[33m";
+                break;
+
+                case 'H':
+                modifier = "[31m";
+                break;
+
+                case 'B':
+                modifier = "[31m";
+                break;
+
+                case 'C':
+                modifier = "[33m";
+                break;
+            }
+
+            std::cout << "\x1b" << modifier << obj << "\x1b[0m ";
         }
         printf("\n");
     }
