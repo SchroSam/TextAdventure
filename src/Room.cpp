@@ -117,7 +117,27 @@ void Room::Load(std::string _path)
         }
     }
 
+    std::ifstream colorFile;
+    colorFile.open("assets/ANSI_COLORS.txt");
+
+    if (!colorFile.is_open())
+    {
+        printf("colorFile not found at: assets/ANSI_COLORS.txt \n");
+        colors.push_back("[35m");
+        colors.push_back("[1;90m");
+        colors.push_back("[32m");
+        colors.push_back("[33m");
+        colors.push_back("[31m");
+    }
+
+    std::string color;
+    
+    for(int i = 0; colorFile >> color && i < 5; i++)
+        colors.push_back(color);
+
     //printf("enemy count: %d\n", enemyCount);
+    colorFile.close();
+    file.close();
 }
 
 void Room::Update()
@@ -138,37 +158,39 @@ void Room::Draw()
         {
             char obj = GetLocation(Vec2(x, y));
             
-            std::string modifier = "[35m";
+            std::string modifier = colors[0];
 
             switch(obj)
             {
                 case '#':
-                modifier = "[1;90m";
+                modifier = colors[1];
                 break;
 
                 case 'D':
-                modifier = "[32m";
+                modifier = colors[2];
                 break;
 
                 case 'L':
-                modifier = "[32m";
+                modifier = colors[2];
                 break;
 
                 case 'K':
-                modifier = "[33m";
-                break;
-
-                case 'H':
-                modifier = "[31m";
-                break;
-
-                case 'B':
-                modifier = "[31m";
+                modifier = colors[3];
                 break;
 
                 case 'C':
-                modifier = "[33m";
+                modifier = colors[3];
                 break;
+
+                case 'H':
+                modifier = colors[4];
+                break;
+
+                case 'B':
+                modifier = colors[4];
+                break;
+
+
             }
 
             std::cout << "\x1b" << modifier << obj << "\x1b[0m ";

@@ -26,4 +26,5 @@ private:
     std::vector<Monster*> m_monsters;
     std::vector<std::vector<char>> m_map;
     std::vector<Door> m_doors;
+    std::vector<std::string> colors = std::vector<std::string>();
 };
