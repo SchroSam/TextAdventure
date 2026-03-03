@@ -7,8 +7,8 @@ D = Door
 L = Locked Door
 S = Start
 K = Key
-H = Hunter      (Tentative)
-B = Butcher     (Tentative)
+H = Hunter
+B = Butcher
 C = Chest
 
 
