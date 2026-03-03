@@ -9,6 +9,7 @@
 
 void Room::Load(std::string _path)
 {
+    enemyCount = 0;
     m_map.clear();
     m_doors.clear();
 
@@ -100,6 +101,7 @@ void Room::Load(std::string _path)
                 h->Start(Vec2(x,y));
                 m_entities.push_back(h);
                 entityCount++;
+                enemyCount++;
             }
 
             if (m_map[y][x] == 'B')
@@ -108,10 +110,13 @@ void Room::Load(std::string _path)
                 b->Start(Vec2(x,y));
                 m_entities.push_back(b);
                 entityCount++;
+                enemyCount++;
             }
 
         }
     }
+
+    printf("enemy count: %d\n", enemyCount);
 }
 
 void Room::Update()
@@ -198,6 +203,7 @@ void Room::FightHunter(Vec2 _pos)
                     m_entities.erase(it);
                     Room::ClearLocation(_pos);
                     m_player->m_gold += 5;
+                    enemyCount--;
                 }
                 else if (m_player->m_health < 1) m_player->Death(m_player->m_gold);
         }
@@ -218,6 +224,7 @@ void Room::FightButcher(Vec2 _pos)
                     m_entities.erase(it);
                     Room::ClearLocation(_pos);
                     m_player->m_gold += 10;
+                    enemyCount--;
                 }
                 else if (m_player->m_health < 1) m_player->Death(m_player->m_gold);
                 printf("\n\n\n---FIGHT OVER---\nHealth: %d\nGold: %d\nStrength: %d\n", m_player->m_health, m_player->m_gold, m_player->m_dice[0].sides);

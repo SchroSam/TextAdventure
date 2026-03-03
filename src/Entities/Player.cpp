@@ -67,11 +67,11 @@ void Player::Update() {
         m_position = tryPos;
     }
 
-    if (room->GetLocation(tryPos) == 'D') {
+    if (room->GetLocation(tryPos) == 'D' && room->enemyCount == 0) {
         room->OpenDoor(tryPos);
     }
 
-    if(room->GetLocation(tryPos) == 'L' && m_keyCount >= 1) {
+    if(room->GetLocation(tryPos) == 'L' && m_keyCount >= 1 && room->enemyCount == 0) {
         m_keyCount--;
         room->OpenDoor(tryPos);
     }
