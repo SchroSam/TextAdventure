@@ -23,14 +23,14 @@ void Butcher::Fight(Player* m_player)
             printf("Butcher\n");
             m_health -= (player_stats.total - butcher_stats.total);
         }
-        else if (butcher_stats.total > player_stats.total)
+        else
         {
             printf("Player\n");
             m_player->m_health -= (butcher_stats.total - player_stats.total);
         }
         if (m_health < 0) m_health = 0;
         if (m_player->m_health < 0) m_player->m_health = 0;
-        printf("\nPlayer Health: %d, Butcher Health: %d\n",m_player->m_health, m_health);
+        printf("Player Health: %d, Butcher Health: %d\n",m_player->m_health, m_health);
         if (m_player->m_health < 1 || m_health < 1) break;
         char p = request_char("Input w to keep fighting or s to retreat >> \n");
         if (p == 's') break;
