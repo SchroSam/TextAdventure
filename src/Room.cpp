@@ -116,7 +116,7 @@ void Room::Load(std::string _path)
         }
     }
 
-    printf("enemy count: %d\n", enemyCount);
+    //printf("enemy count: %d\n", enemyCount);
 }
 
 void Room::Update()
