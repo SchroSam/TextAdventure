@@ -152,7 +152,6 @@ void Room::Update()
 
 void Room::Draw()
 {
-    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     for (int y = 0; y < m_map.size(); y++)
     {
         for (int x = 0; x < m_map[y].size(); x++)
@@ -202,6 +201,7 @@ void Room::Draw()
         }
         printf("\n");
     }
+    printf("\n");
 }
 
 char Room::GetLocation(Vec2 _pos)

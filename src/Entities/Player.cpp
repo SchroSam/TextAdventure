@@ -25,6 +25,7 @@ void Player::Update() {
 
     do {
         directionInput = request_char("wasd and Enter to move");
+        printf("\n");
     } while (directionInput != 'w' &&
              directionInput != 'a' &&
              directionInput != 's' &&
