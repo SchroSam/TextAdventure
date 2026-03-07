@@ -1,5 +1,3 @@
-//Sawyer Grimm was here
-
 #ifdef _WIN32
 #include <windows.h>
 #endif
